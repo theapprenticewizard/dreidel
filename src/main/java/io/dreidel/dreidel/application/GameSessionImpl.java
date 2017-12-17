@@ -26,6 +26,7 @@ public class GameSessionImpl implements GameSession {
     private GameState createGameState() {
         GameState gameState = new GameState();
         gameState.setSpin(game.spin());
+        gameState.setPlayers(game.getPlayerSet());
         return gameState;
     }
 }

@@ -5,10 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 @Getter
 @NoArgsConstructor
@@ -27,12 +24,28 @@ public class Game {
     public Game(int players) {
         dreidelSpinStack = new Stack<>();
         playerSet = new LinkedHashSet<>();
+
+        for (int i = 0; i < players; i++) {
+            Player player = new Player();
+            player.setGelt(10);
+            player.setActive(true);
+            player.setName(UUID.randomUUID().toString());
+            playerSet.add(player); // TODO: take a whole player as a param instead
+        }
     }
 
     public Spin spin() {
         Spin spin = new Spin(getRandom());
         dreidelSpinStack.push(spin);
+        playerSet.forEach(
+                player -> player.setGelt(player.getGelt() + 1) // TODO: enforce invariance
+        );
+
         return spin;
+    }
+
+    public Set<Player> getPlayerSet() {
+        return this.playerSet;
     }
 
     private int getRandom() {
