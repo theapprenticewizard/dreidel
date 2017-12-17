@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Scope;
 public class GameConfiguration {
 
     @Bean
-    @Scope("session")
     public Game game() {
         return new Game();
     }
