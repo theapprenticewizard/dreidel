@@ -15,5 +15,7 @@ public class Player extends MongoDbEntity {
     private String name;
 
     @Min(value = 0, message = "you must have a positive amount of gelt")
-    private int geltCount;
+    private int gelt;
+
+    private boolean active;
 }

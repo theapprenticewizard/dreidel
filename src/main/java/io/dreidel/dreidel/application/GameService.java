@@ -1,16 +1,15 @@
 package io.dreidel.dreidel.application;
 
-import io.dreidel.dreidel.model.Game;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+@Service
 public class GameService {
-    private final Game game;
 
-    public GameService(Game game) {
-        this.game = game;
+    private final GameSessionFactory gameSessionFactory;
+
+    public GameService(GameSessionFactory gameSessionFactory) {
+        this.gameSessionFactory = gameSessionFactory;
     }
-
 
 
 }

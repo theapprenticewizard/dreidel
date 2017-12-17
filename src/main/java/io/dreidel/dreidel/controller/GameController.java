@@ -12,6 +12,6 @@ public class GameController {
     @GetMapping("/play")
     @ResponseBody
     public Spin playRound() {
-        return new Game().spin();
+        return new Game(2).spin();
     }
 }
